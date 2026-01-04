@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/client/public/Poppins-VariableFont_wght.ttf");
+}
+
+body {
+  min-height: max-content;
+  height: 100vh;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  width: 100vw;
+  background: linear-gradient(to bottom, var(--main-secondary), var(--main-primary-light));
+}
+
+button {
+  border: none;
+  transition: 250ms;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+p{
+  max-width: 100%;overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

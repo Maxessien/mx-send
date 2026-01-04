@@ -1,0 +1,180 @@
+@use "sass:math";
+
+@function rem($pxValue){
+    @return math.div($pxValue, 16) * 1rem
+};
+
+
+.page_header{
+    width: 100%;
+    height: max-content;
+    padding: rem(25) rem(20);
+    img{
+        height: rem(50);
+    }
+}
+
+.page_content{
+    width: 90%;
+    max-width: rem(540);
+    margin: auto;
+    .upload_section{
+        background: var(--main-secondary);
+        box-shadow: 0px 0px 10px -5px black;
+        width: 100%;
+        border-radius: rem(8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: rem(20);
+        padding: rem(20) rem(15);
+        margin-bottom: rem(25);
+        img{
+            max-height: rem(150);
+        }
+        h2{
+            font-size: rem(25);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+    }
+    .send_btn{
+        width: 100%;
+        max-width: rem(380);
+        margin: auto;
+        padding: rem(18) rem(25);
+        font-size: rem(20);
+        font-weight: 500;
+        color: var(--main-secondary);
+        border-radius: 9999px;
+        background: linear-gradient(to right, var(--main-tertiary), var(--main-primary));
+        box-shadow: inset 0px 0px 7px -4px var(--main-primary);
+        margin-bottom: rem(35);
+    }
+    .uploaded_section{
+        width: 100%;
+        box-shadow: 0px 0px 10px -5px black;
+        background: var(--main-secondary);
+        border-radius: rem(8);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: rem(20);
+        padding: rem(20) rem(15);
+        margin-top: rem(25);
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            h3{
+                font-size: rem(18);
+                color: var(--text-primary);
+                font-weight: 600;
+            }
+            button{
+                font-size: rem(16);
+                color: var(--text-primary-light);
+                font-weight: 600;
+                padding: rem(8) rem(12);
+                border-radius: rem(6);
+                &:hover{
+                    background: var(--main-primary-light);
+                }
+            }
+        }
+        ul{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            gap: rem(20);
+            width: 100%;
+            li{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: rem(7);
+                div{
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    gap: rem(8);
+                    flex-direction: column;
+                    img{
+                        max-width: rem(30);
+                    }
+                    p{
+                        font-size: rem(18);
+                        color: var(--text-primary);
+                        font-weight: 500;
+                        line-clamp: 2;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                    }
+                    span{
+                        font-size: rem(18);
+                        color: var(--text-primary-light);
+                        font-weight: 500;
+                    }
+                    .download_btn{
+                        padding: rem(12);
+                        border-radius: 9999px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: rem(19);
+                        color: var(--main-primary);
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+    .uploading_list{
+        width: 100%;
+        box-shadow: 0px 0px 10px -5px black;
+        background: var(--main-secondary);
+        border-radius: rem(8);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        gap: rem(10);
+        padding: rem(20) rem(15);
+        li{
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: rem(20);
+            padding: rem(20) rem(15);
+            position: relative;
+            img{
+                max-width: rem(30);
+            }
+            p{
+                font-size: rem(18);
+                color: var(--text-primary);
+                width: 100%;
+                font-weight: 500;
+                line-clamp: 2;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+            }
+        }
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--main-primary-light);
+            opacity: 0.6;
+        }
+    }
+}
