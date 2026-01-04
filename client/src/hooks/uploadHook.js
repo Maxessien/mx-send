@@ -6,7 +6,7 @@ const useUploaded = () => {
 
   const getUploadedFiles = async () => {
     try {
-      const uploads = await axios.get(`${import.meta.env.VITE_API_URL}/api/upload`)
+      const uploads = await axios.get(`/api/upload`)
       console.log(uploads)
       return uploads.data
     } catch (err) {

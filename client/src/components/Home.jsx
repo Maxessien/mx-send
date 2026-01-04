@@ -21,7 +21,7 @@ const Home = () => {
         const xhr = new XMLHttpRequest();
         const formData = new FormData();
         formData.append("file", file);
-        xhr.open("POST", `${import.meta.env.VITE_API_URL}/api/upload`);
+        xhr.open("POST", `/api/upload`);
         const uploadId = uuidV4();
         console.log(uploadId, "Iddd");
         xhr.upload.onprogress = (event) => {
@@ -114,13 +114,11 @@ const Home = () => {
                 <li>
                   <div>
                     <img src="/images/document-icon.png" alt="File icon" />
-                    <p>{file_name}</p>
-                  </div>
-                  <div>
-                    <a href={`${import.meta.env.VITE_API_URL}/api/upload/${upload_id}`} class="download_btn">
+                    <a href={`/api/upload/${upload_id}`} class="download_btn">
                       <DownloadIcon />
                     </a>
                   </div>
+                    <p>{file_name}</p>
                 </li>
               );
             })}

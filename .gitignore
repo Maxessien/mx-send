@@ -1,4 +1,5 @@
 client/node_modules
+client/.env
 
 server/node_modules
 
@@ -7,6 +8,7 @@ server/uploads
 server/tempUploads
 
 server/upload.db
+server/.env
 
 
 # Logs

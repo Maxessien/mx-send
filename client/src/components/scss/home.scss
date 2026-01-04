@@ -94,35 +94,18 @@
             width: 100%;
             li{
                 width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
                 gap: rem(7);
                 div{
                     display: flex;
                     align-items: flex-start;
-                    justify-content: center;
+                    justify-content: space-between;
                     gap: rem(8);
-                    flex-direction: column;
+                    margin-bottom: rem(8);
                     img{
                         max-width: rem(30);
                     }
-                    p{
-                        font-size: rem(18);
-                        color: var(--text-primary);
-                        font-weight: 500;
-                        line-clamp: 2;
-                        display: -webkit-box;
-                        -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 2;
-                    }
-                    span{
-                        font-size: rem(18);
-                        color: var(--text-primary-light);
-                        font-weight: 500;
-                    }
                     .download_btn{
-                        padding: rem(12);
+                        padding: rem(4);
                         border-radius: 9999px;
                         display: flex;
                         justify-content: center;
@@ -130,7 +113,17 @@
                         font-size: rem(19);
                         color: var(--main-primary);
                         font-weight: 700;
+                        background: rgb(191, 235, 251);
                     }
+                }
+                p{
+                    font-size: rem(16);
+                    color: var(--text-primary);
+                    font-weight: 500;
+                    line-clamp: 2;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
                 }
             }
         }
