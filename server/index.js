@@ -2,9 +2,26 @@ import express from "express";
 import path from "path";
 import { initUploadTable } from "./config/sqlConfig.js";
 import uploadRouter from "./routes/uploadRoutes.js";
+import { cleanup } from "./utils/cleanUp.js";
 
 
 const app = express()
+
+
+// Register cleanup handlers for different termination signals
+process.on('SIGINT', () => {
+    cleanup();
+    process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+    cleanup();
+    process.exit(0);
+});
+
+process.on('exit', () => {
+    console.log("Server stopped");
+});
 
 app.use(express.static(path.join(process.cwd(), "../client/dist")));
 
