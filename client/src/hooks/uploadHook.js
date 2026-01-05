@@ -1,7 +1,11 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query"
 
 
+/**
+ * React Custom hook for getting uploaded files
+ * @returns {UseQueryResult} Query result containing uploads data and other functions or properties
+ */
 const useUploaded = () => {
 
   const getUploadedFiles = async () => {
@@ -27,4 +31,4 @@ const useUploaded = () => {
 
 
 
-export {useUploaded}
+export { useUploaded };
