@@ -92,7 +92,7 @@ const Home = () => {
                 ></div>
                 <img src="/images/document-icon.png" alt="File icon" />
                 <p>
-                  {name} - {size} MB
+                  {name} - {(size / (1024 * 1024)).toFixed(2)} MB
                 </p>
               </li>
             );

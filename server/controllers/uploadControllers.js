@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import pth from "path";
 import { v4 as uuidv4 } from "uuid";
 import { all, get, run } from "../config/sqlConfig.js";
+import { SERVER_PATH } from "../index.js";
 
 const uploadFile = async (req, res) => {
   try {
@@ -9,9 +10,9 @@ const uploadFile = async (req, res) => {
     const id = uuidv4();
     const { size, path, originalname } = req.file;
     const ext = pth.extname(originalname);
-    await fs.rename(path, pth.join(process.cwd(), `uploads/${originalname}`));
+    await fs.rename(path, pth.join(SERVER_PATH, `uploads/${originalname}`));
     const query = `INSERT INTO uploads (upload_id, path, file_name, size, ext) VALUES (?, ?, ?, ?, ?)`;
-    await run(query, [id, pth.join(process.cwd(), `uploads/${originalname}`), originalname, size, ext]);
+    await run(query, [id, pth.join(SERVER_PATH, `uploads/${originalname}`), originalname, size, ext]);
     return res.status(201).json({ message: "File uploaded successfully" });
   } catch (err) {
     console.error(err);

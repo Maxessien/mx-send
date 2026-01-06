@@ -1,6 +1,6 @@
+import fs from "fs";
 import path from "path";
-import fs from "fs"
-import { run } from "../config/sqlConfig.js";
+import { SERVER_PATH } from './../index.js';
 
 /**
  * Cleanup function to delete database and uploaded files on server shutdown
@@ -9,11 +9,8 @@ export const cleanup = () => {
     console.log("\nCleaning up before shutdown...");
     
     try {
-        // Delete upload.db file
-        run("DELETE FROM uploads")
-        
         // Delete all files in uploads folder
-        const uploadsPath = path.join(process.cwd(), "uploads");
+        const uploadsPath = path.join(SERVER_PATH, "uploads");
         if (fs.existsSync(uploadsPath)) {
             const uploadFiles = fs.readdirSync(uploadsPath);
             uploadFiles.forEach(file => {
@@ -23,7 +20,7 @@ export const cleanup = () => {
         }
         
         // Delete all files in tempUploads folder
-        const tempUploadsPath = path.join(process.cwd(), "tempUploads");
+        const tempUploadsPath = path.join(SERVER_PATH, "tempUploads");
         if (fs.existsSync(tempUploadsPath)) {
             const tempFiles = fs.readdirSync(tempUploadsPath);
             tempFiles.forEach(file => {

@@ -1,8 +1,11 @@
+#!/usr/bin/env node
+
 import express from "express";
 import path from "path";
-import { initUploadTable } from "./config/sqlConfig.js";
+import { initUploadTable, run } from "./config/sqlConfig.js";
 import uploadRouter from "./routes/uploadRoutes.js";
 import { cleanup } from "./utils/cleanUp.js";
+
 
 
 const app = express()
@@ -23,16 +26,19 @@ process.on('exit', () => {
     console.log("Server stopped");
 });
 
-app.use(express.static(path.join(process.cwd(), "../client/dist")));
+export const SERVER_PATH = "C:/Users/Dell/Documents/projects/mx-send/server"
+
+app.use(express.static(path.join(SERVER_PATH, "../client/dist")));
 
 app.get("/app", async (_, res) => {
-    res.sendFile(path.join(process.cwd(), "../client/dist/index.html"))
+    res.sendFile(path.join(SERVER_PATH, "../client/dist/index.html"))
 })
 
 app.use("/api/upload", uploadRouter)
 
 try {
     await initUploadTable()
+    run("DELETE FROM uploads")
 } catch (err) {
     console.error("Failed to init upload table", err)
     process.exit(1)
