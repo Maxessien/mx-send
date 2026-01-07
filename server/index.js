@@ -5,6 +5,10 @@ import path from "path";
 import { initUploadTable, run } from "./config/sqlConfig.js";
 import uploadRouter from "./routes/uploadRoutes.js";
 import { cleanup } from "./utils/cleanUp.js";
+import os from 'os';
+import qrcode from "qrcode-terminal"
+import chalk from "chalk";
+import terminalLink from 'terminal-link';
 
 
 
@@ -47,5 +51,7 @@ try {
 
 
 app.listen(3000, "0.0.0.0", ()=>{
-    console.log("Server running on port 3000")
+    const {address} = os.networkInterfaces()['Wi-Fi'].find((networkInfo)=>networkInfo.family === "IPv4")
+    console.log(chalk.cyan(`http://${address}:3000/app`))
+    qrcode.generate(`http://${address}:3000/app`, {small: true})
 }) 

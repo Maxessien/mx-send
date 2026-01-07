@@ -101,7 +101,12 @@ The server runs on port 3000 by default and serves the built client application.
    ```bash
    npm run dev
    ```
-   Server will run on `http://localhost:3000`
+   - Server listens on `0.0.0.0:3000` and is reachable from devices on your local network.
+   - On startup, the terminal prints your LAN URL and displays a QR code you can scan from a phone to open the app directly.
+   - Example output:
+
+     - URL: `http://<your-lan-ip>:3000/app`
+     - A small ASCII QR code is rendered in the terminal.
 
 2. **Start the client** (from the `client` directory, in a new terminal)
    ```bash
@@ -124,7 +129,27 @@ The server runs on port 3000 by default and serves the built client application.
 3. **Access the application**
    Navigate to `http://localhost:3000/app`
 
-## 🔌 API Endpoints
+## QR Code Access
+
+The server now prints a scannable QR code in the terminal when it starts. This makes it easy to open the app on a phone connected to the same Wi‑Fi network.
+
+- What it does: Generates a QR code for `http://<your-lan-ip>:3000/app` using `qrcode-terminal` and logs a clickable link with `chalk` styling.
+- Where it lives: See `server/index.js` — the QR is generated inside the `app.listen` callback.
+- How to use:
+   - Ensure your computer and phone are on the same Wi‑Fi network.
+   - Start the server from `server`: `npm run dev`.
+   - Scan the QR code displayed in the terminal with your phone’s camera or a QR app.
+   - The app opens at `http://<your-lan-ip>:3000/app`.
+- Notes:
+   - The code currently derives the IP from the `Wi-Fi` network interface on Windows. If your interface name differs (e.g., `Ethernet` or on macOS/Linux), you may need to update the interface selection in `server/index.js`.
+   - The server binds to `0.0.0.0`, so it’s accessible to other devices on your LAN. Avoid running on untrusted networks.
+
+### Dependencies used for QR
+
+- `qrcode-terminal`: Renders the QR code in the terminal.
+- `chalk`: Styles the terminal output for the printed URL.
+
+## API Endpoints
 
 ### Upload File
 - **POST** `/api/upload`

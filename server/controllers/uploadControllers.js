@@ -6,7 +6,6 @@ import { SERVER_PATH } from "../index.js";
 
 const uploadFile = async (req, res) => {
   try {
-    console.log("uplljdndn")
     const id = uuidv4();
     const { size, path, originalname } = req.file;
     const ext = pth.extname(originalname);
@@ -36,7 +35,6 @@ const getFileById = async (req, res) => {
 
 const getAllFiles = async (req, res) => {
   try {
-    console.log("getting all")
     const filesData = await all("SELECT file_name, ext, upload_id, size, date_added FROM uploads");
     return res.status(200).json(filesData);
   } catch (err) {
